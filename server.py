@@ -18,7 +18,7 @@ app = Flask(__name__)
 CORS(app)
 class_names = ["Card", "NoCard"]
 
-client = MongoClient("mongodb+srv://Pranav:Recovery72@cluster0.utu0m.mongodb.net/myFirstDatabase?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority")
+client = MongoClient("mongodb+srv://<username>:<password>@cluster0.utu0m.mongodb.net/<dbName>?ssl=true&ssl_cert_reqs=CERT_NONE&retryWrites=true&w=majority")
 db = client['Cluster0']
 collection = db["ai-project"]
 # print(collection.find_one())
