@@ -1,0 +1,12 @@
+Lib/
+Scripts/
+Include/
+templates/
+/react-frontend/node_modules/
+/react-frontend/src/media/
+/model.h5
+/model3.h5
+/new_model_cards.h5
+/new_model.h5
+/pyvenv.cfg
+/__pycache__
