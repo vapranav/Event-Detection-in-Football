@@ -8,5 +8,6 @@ templates/
 /model3.h5
 /new_model_cards.h5
 /new_model.h5
+/new_model_cards.h5
 /pyvenv.cfg
 /__pycache__

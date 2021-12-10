@@ -3,8 +3,7 @@ import "./App.css";
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import axios from "axios";
-import CornerVideo from "./media/vid2.mp4";
-import CardVideo from "./media/cardvid.mp4";
+import OverallVideo from "./media/cards-corners.mp4";
 
 function App() {
   const ref = React.createRef();
@@ -38,10 +37,12 @@ function App() {
   const handleCorner = (e) => {
     e.preventDefault();
     setCornerVisible(true);
+    setCardVisible(false);
   };
   const handleCard = (e) => {
     e.preventDefault();
     setCardVisible(true);
+    setCornerVisible(false);
   };
 
   return (
@@ -49,14 +50,18 @@ function App() {
       <header className='App-header'>
         {/* <img src={logo} className='App-logo' alt='logo' />
         <p>React + Flask Tutorial</p> */}
+        <h2> Analyze your clips </h2>
         <button onClick={() => console.log("clicked")}>
           Upload your clip!
         </button>
-        <button onClick={handleCorner}>Get Corner Timestamps</button>
-        <ReactPlayer ref={ref} url={CornerVideo} controls={true} />
+        <button style={{ margin: 5 }} onClick={handleCorner}>
+          Get Corner Timestamps
+        </button>
+        <button onClick={handleCard}>Get Card Timestamps</button>
+        <ReactPlayer ref={ref} url={OverallVideo} controls={true} />
         <div>
-          {getCorners.status === 200 && cornerVisible == true ? (
-            getCorners.data.timestamps.map((time) => (
+          {getCards.status === 200 && cardVisible == true ? (
+            getCards.data.timestamps.map((time) => (
               <button onClick={() => ref.current.seekTo(time)}>
                 Seek to {time}
               </button>
@@ -65,12 +70,10 @@ function App() {
             <h3></h3>
           )}
         </div>
-        <button onClick={handleCard}>Get Card Timestamps</button>
-        <ReactPlayer ref={cardVideo} url={CardVideo} controls={true} />
         <div>
-          {getCorners.status === 200 && cardVisible == true ? (
-            getCards.data.timestamps.map((time) => (
-              <button onClick={() => cardVideo.current.seekTo(time)}>
+          {getCorners.status === 200 && cornerVisible == true ? (
+            getCorners.data.timestamps.map((time) => (
+              <button onClick={() => ref.current.seekTo(time)}>
                 Seek to {time}
               </button>
             ))
